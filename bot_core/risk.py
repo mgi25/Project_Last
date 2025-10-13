@@ -14,22 +14,28 @@ LOGGER = logging.getLogger(__name__)
 
 @dataclass
 class RiskConfig:
+    """Configuration values for :class:`RiskManager`."""
+
     max_drawdown: float = 0.1
     daily_profit_target: float = 0.05
     daily_loss_limit: float = 0.02
     kelly_fraction: float = 0.5
     volatility_lookback: int = 120
+    equity_stop_trigger: float | None = None
+    slippage_tolerance: float = 0.0002
 
 
 class RiskManager:
     def __init__(self, config: RiskConfig) -> None:
         self.config = config
         self.start_equity = None
+        self.peak_equity = None
         self.daily_pnl = 0.0
         self.drawdown = 0.0
 
     def reset_session(self, equity: float) -> None:
         self.start_equity = equity
+        self.peak_equity = equity
         self.daily_pnl = 0.0
         self.drawdown = 0.0
         LOGGER.info("Risk manager session reset | equity=%.2f", equity)
@@ -39,7 +45,11 @@ class RiskManager:
             self.reset_session(equity)
             return
         self.daily_pnl = equity - self.start_equity
-        self.drawdown = min(self.drawdown, self.daily_pnl)
+        if self.peak_equity is None:
+            self.peak_equity = equity
+        else:
+            self.peak_equity = max(self.peak_equity, equity)
+        self.drawdown = min(self.drawdown, equity - self.peak_equity)
 
     def check_limits(self) -> bool:
         if self.start_equity is None:
@@ -51,8 +61,18 @@ class RiskManager:
         if self.daily_pnl >= self.config.daily_profit_target * self.start_equity:
             LOGGER.info("Daily profit target reached. Stopping trading.")
             return False
-        if equity <= self.start_equity * (1 - self.config.max_drawdown):
+        if (
+            self.config.max_drawdown > 0
+            and self.peak_equity is not None
+            and equity <= self.peak_equity * (1 - self.config.max_drawdown)
+        ):
             LOGGER.error("Max drawdown exceeded. Stopping trading.")
+            return False
+        if (
+            self.config.equity_stop_trigger is not None
+            and equity <= self.start_equity * (1 - self.config.equity_stop_trigger)
+        ):
+            LOGGER.error("Equity stop trigger reached. Stopping trading.")
             return False
         return True
 
