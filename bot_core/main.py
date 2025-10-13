@@ -73,20 +73,37 @@ def initialize_mt5(cfg: Dict[str, Any]) -> bool:
         logging.error("MetaTrader5 package missing: %s", exc)
         return False
 
-    terminal_path = cfg.get("path")
-    account = cfg.get("account")
-    password = cfg.get("password")
-    server = cfg.get("server")
+    # Support both flat and nested account credential structures
+    account_cfg: Dict[str, Any] = {}
+    if isinstance(cfg.get("account"), dict):
+        account_cfg = dict(cfg["account"])
 
-    initialized = mt5.initialize(path=terminal_path, login=account, password=password, server=server)
+    terminal_path = account_cfg.get("path", cfg.get("path"))
+    login = account_cfg.get("login", cfg.get("account"))
+    password = account_cfg.get("password", cfg.get("password"))
+    server = account_cfg.get("server", cfg.get("server"))
+
+    if login is None:
+        print("❌ MT5 initialization failed: missing login credential")
+        logging.error("MT5 initialization failed: missing login credential")
+        return False
+
+    try:
+        login_int = int(login)
+    except (TypeError, ValueError):
+        print(f"❌ MT5 initialization failed: invalid login value {login!r}")
+        logging.error("MT5 initialization failed: invalid login value %r", login)
+        return False
+
+    initialized = mt5.initialize(path=terminal_path, login=login_int, password=password, server=server)
     if not initialized:
         error = mt5.last_error()
         print("❌ MT5 initialization failed:", error)
         logging.error("MT5 initialization failed: %s", error)
         return False
 
-    print(f"✅ Connected to MT5 account {account} on {server}")
-    logging.info("Connected to MT5 account %s on %s", account, server)
+    print(f"✅ Connected to MT5 account {login_int} on {server}")
+    logging.info("Connected to MT5 account %s on %s", login_int, server)
     return True
 
 
