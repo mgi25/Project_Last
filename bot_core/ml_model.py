@@ -28,9 +28,29 @@ LOGGER = logging.getLogger(__name__)
 
 @dataclass
 class MLConfig:
+    """Configuration container for the ML predictor."""
+
     model_type: str = "random_forest"
     features_lookback: int = 50
     retrain_interval: str = "1d"
+    train_test_split: float = 0.2
+    random_state: int | None = 42
+    model_save_path: str | None = None
+    scaler_save_path: str | None = None
+    feature_list: list[str] | None = None
+
+    def test_size(self) -> float:
+        """Return the test split proportion derived from ``train_test_split``."""
+
+        ratio = self.train_test_split
+        if not 0.0 < ratio < 1.0:
+            return 0.2
+        # If the ratio is greater than 0.5 we interpret it as the training share
+        # to maintain backwards compatibility with configs using ``train_test_split``
+        # to mean training size (e.g. 0.8 for 80% train / 20% test).
+        if ratio > 0.5:
+            ratio = 1.0 - ratio
+        return max(min(ratio, 0.95), 0.05)
 
 
 class LSTMClassifier(nn.Module):  # type: ignore[misc]
@@ -49,10 +69,19 @@ class MLPredictor:
     def __init__(self, config: MLConfig, model_dir: str = "models") -> None:
         self.config = config
         self.model_dir = Path(model_dir)
-        self.model_dir.mkdir(parents=True, exist_ok=True)
         self.scaler = StandardScaler()
         self.model: RandomForestClassifier | LSTMClassifier | None = None
-        self.model_path = self.model_dir / f"ml_{self.config.model_type}.pkl"
+        if self.config.model_save_path:
+            self.model_path = Path(self.config.model_save_path)
+            self.model_path.parent.mkdir(parents=True, exist_ok=True)
+        else:
+            self.model_dir.mkdir(parents=True, exist_ok=True)
+            self.model_path = self.model_dir / f"ml_{self.config.model_type}.pkl"
+        if self.config.scaler_save_path:
+            self.scaler_path = Path(self.config.scaler_save_path)
+            self.scaler_path.parent.mkdir(parents=True, exist_ok=True)
+        else:
+            self.scaler_path = None
 
     def _prepare_features(self, df: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
         df = df.copy()
@@ -82,16 +111,24 @@ class MLPredictor:
         X, y = self._prepare_features(df)
         if len(X) < 50:
             raise ValueError("Insufficient data for training")
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=self.config.test_size(), shuffle=False
+        )
         X_train_scaled = self.scaler.fit_transform(X_train)
         X_test_scaled = self.scaler.transform(X_test)
         if self.config.model_type == "random_forest":
-            model = RandomForestClassifier(n_estimators=200, max_depth=5, random_state=42)
+            model = RandomForestClassifier(
+                n_estimators=200, max_depth=5, random_state=self.config.random_state
+            )
             model.fit(X_train_scaled, y_train)
             y_pred = model.predict(X_test_scaled)
             accuracy = accuracy_score(y_test, y_pred)
             self.model = model
-            joblib.dump({"model": model, "scaler": self.scaler}, self.model_path)
+            if self.scaler_path is not None:
+                joblib.dump(model, self.model_path)
+                joblib.dump(self.scaler, self.scaler_path)
+            else:
+                joblib.dump({"model": model, "scaler": self.scaler}, self.model_path)
             LOGGER.info("RandomForest trained with accuracy %.3f", accuracy)
             return {"accuracy": float(accuracy)}
         elif self.config.model_type == "lstm":
@@ -126,9 +163,21 @@ class MLPredictor:
             LOGGER.warning("ML model file %s does not exist", self.model_path)
             return
         if self.config.model_type == "random_forest":
-            data = joblib.load(self.model_path)
-            self.model = data["model"]
-            self.scaler = data["scaler"]
+            if self.scaler_path is not None and self.scaler_path.exists():
+                self.model = joblib.load(self.model_path)
+                self.scaler = joblib.load(self.scaler_path)
+            else:
+                data = joblib.load(self.model_path)
+                if isinstance(data, dict) and "model" in data:
+                    self.model = data["model"]
+                    self.scaler = data["scaler"]
+                else:
+                    self.model = data
+                    scaler_fallback = self.model_path.with_name(
+                        f"{self.model_path.stem}_scaler.pkl"
+                    )
+                    if scaler_fallback.exists():
+                        self.scaler = joblib.load(scaler_fallback)
         elif self.config.model_type == "lstm":
             if torch is None:
                 raise ImportError("PyTorch is required for LSTM model")
