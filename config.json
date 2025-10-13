@@ -1,0 +1,38 @@
+{
+  "account": {
+    "login": 0,
+    "password": "",
+    "server": "Exness-MT5Real",
+    "path": ""
+  },
+  "symbols": ["EURUSD", "GBPUSD", "USDJPY", "XAUUSD"],
+  "timeframe": "M1",
+  "mode": "backtest",
+  "risk": {
+    "max_drawdown": 0.1,
+    "daily_profit_target": 0.05,
+    "daily_loss_limit": 0.02,
+    "kelly_fraction": 0.5,
+    "volatility_lookback": 120
+  },
+  "optimization": {
+    "sharpe_target": 2.0,
+    "max_iterations": 50,
+    "bayesian_trials": 25
+  },
+  "ml": {
+    "model_type": "random_forest",
+    "retrain_interval": "1d",
+    "features_lookback": 50
+  },
+  "rl": {
+    "algorithm": "ppo",
+    "train_interval": "1d",
+    "max_steps": 20000
+  },
+  "logging": {
+    "trade_log": "logs/trades.csv",
+    "ml_log": "logs/ml_trading_log.csv",
+    "session_log": "logs/session.log"
+  }
+}
