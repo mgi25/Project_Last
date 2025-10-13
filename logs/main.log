@@ -82,3 +82,27 @@ Traceback (most recent call last):
                           ~~~~~~~~^^^^^^^^^^
 TypeError: MLConfig.__init__() got an unexpected keyword argument 'train_test_split'
 2025-10-13 18:36:56,668 [INFO] MT5 connection closed
+2025-10-13 18:44:24,382 [INFO] Starting bot in train mode
+2025-10-13 18:44:50,807 [INFO] RandomForest trained with accuracy 0.535
+2025-10-13 18:44:50,809 [INFO] Training complete: {'accuracy': 0.53475201647503}
+2025-10-13 18:44:50,809 [INFO] Completed train mode successfully
+2025-10-13 18:44:50,814 [INFO] MT5 connection closed
+2025-10-13 18:44:54,832 [INFO] Starting bot in tune mode
+2025-10-13 18:44:55,271 [INFO] Running legacy tuning pipeline
+2025-10-13 18:44:55,273 [INFO] Newton optimization result: x=[1. 1.] score=-0.0000
+2025-10-13 18:44:55,297 [INFO] Bayesian tuning result: params={'threshold': 1.040323704012444} score=-0.0403
+2025-10-13 18:44:55,297 [INFO] Completed tune mode successfully
+2025-10-13 18:44:55,302 [INFO] MT5 connection closed
+2025-10-13 18:45:06,863 [INFO] Starting bot in backtest mode
+2025-10-13 18:45:07,312 [INFO] Running basic backtest
+2025-10-13 18:45:32,112 [INFO] Backtest complete | return=-0.0174 sharpe=-0.1094 win_rate=0.49
+2025-10-13 18:45:32,113 [INFO] Completed backtest mode successfully
+2025-10-13 18:45:32,113 [INFO] MT5 connection closed
+2025-10-13 18:45:51,437 [INFO] Starting bot in live mode
+2025-10-13 18:45:51,545 [INFO] Connected to MT5 account 274509355 on Exness-MT5Trial6
+2025-10-13 18:45:51,926 [ERROR] Error during live: ExecutionEngine.__init__() missing 1 required positional argument: 'account'
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 247, in main
+    engine = ExecutionEngine(config)
+TypeError: ExecutionEngine.__init__() missing 1 required positional argument: 'account'
+2025-10-13 18:45:51,927 [INFO] MT5 connection closed
