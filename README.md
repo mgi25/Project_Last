@@ -40,5 +40,7 @@ models/                   # Persisted ML/RL models
    ```
 4. Use `--mode backtest` for historical simulation or `--mode live` for live trading.
 
+For a detailed, step-by-step setup checklist (including cloning the project, configuring MT5, and example commands for every mode) see [`docs/SETUP_GUIDE.md`](docs/SETUP_GUIDE.md).
+
 ## Disclaimer
 Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. This project is provided for educational purposes only. Use at your own risk.
