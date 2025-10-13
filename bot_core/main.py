@@ -240,11 +240,33 @@ def main() -> None:
 
         elif args.mode == "live":
             try:
-                from bot_core.execution import ExecutionEngine  # type: ignore[attr-defined]
+                from bot_core.execution import ExecutionConfig, ExecutionEngine  # type: ignore[attr-defined]
             except ImportError:
                 logging.error("ExecutionEngine not implemented. Live mode unavailable.")
             else:
-                engine = ExecutionEngine(config)
+                exec_settings = config.get("execution", {})
+                exec_kwargs = {
+                    "mode": "live",
+                    "slippage": float(exec_settings.get("slippage", 0.0001)),
+                    "refresh_rate_ms": int(exec_settings.get("refresh_rate_ms", 500)),
+                    "max_open_trades": int(exec_settings.get("max_open_trades", 5)),
+                    "trade_cooldown_sec": int(exec_settings.get("trade_cooldown_sec", 30)),
+                    "enable_trailing_stop": bool(exec_settings.get("enable_trailing_stop", False)),
+                    "trailing_stop_distance": float(exec_settings.get("trailing_stop_distance", 0.0015)),
+                    "history_bars": int(exec_settings.get("history_bars", 500)),
+                    "min_ml_confidence": float(exec_settings.get("min_ml_confidence", 0.55)),
+                }
+                if exec_settings.get("max_cycles") is not None:
+                    try:
+                        exec_kwargs["max_cycles"] = int(exec_settings.get("max_cycles"))
+                    except (TypeError, ValueError):
+                        logging.warning(
+                            "Invalid max_cycles value in execution config: %r",
+                            exec_settings.get("max_cycles"),
+                        )
+                execution_config = ExecutionConfig(**exec_kwargs)
+                account_cfg = config.get("account", {})
+                engine = ExecutionEngine(config, execution_config, account_cfg, demo=args.demo)
                 engine.start()
 
         logging.info("Completed %s mode successfully", args.mode)
