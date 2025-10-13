@@ -1,38 +1,100 @@
 {
   "account": {
-    "login": 0,
-    "password": "",
-    "server": "Exness-MT5Real",
-    "path": ""
+    "login": 274509355,
+    "password": "Mgi@2005",
+    "server": "Exness-MT5Trial6",
+    "path": "C:\\\\Program Files\\\\MetaTrader 5 EXNESS\\\\terminal64.exe"
   },
+
   "symbols": ["EURUSD", "GBPUSD", "USDJPY", "XAUUSD"],
   "timeframe": "M1",
   "mode": "backtest",
+
+  "data": {
+    "history_days": 60,
+    "save_path": "data/",
+    "refresh_interval_sec": 60
+  },
+
   "risk": {
-    "max_drawdown": 0.1,
+    "max_drawdown": 0.10,
     "daily_profit_target": 0.05,
     "daily_loss_limit": 0.02,
     "kelly_fraction": 0.5,
-    "volatility_lookback": 120
+    "volatility_lookback": 120,
+    "equity_stop_trigger": 0.15,
+    "slippage_tolerance": 0.0002
   },
+
   "optimization": {
+    "objective": "maximize_sharpe",
     "sharpe_target": 2.0,
     "max_iterations": 50,
-    "bayesian_trials": 25
+    "bayesian_trials": 25,
+    "newton_learning_rate": 0.1,
+    "parameter_bounds": {
+      "stop_loss": [10, 50],
+      "take_profit": [15, 100],
+      "spread_limit": [0.1, 3.0],
+      "hedge_trigger": [0.5, 2.0]
+    }
   },
+
   "ml": {
     "model_type": "random_forest",
     "retrain_interval": "1d",
-    "features_lookback": 50
+    "features_lookback": 50,
+    "train_test_split": 0.8,
+    "random_state": 42,
+    "model_save_path": "models/model.pkl",
+    "scaler_save_path": "models/scaler.pkl",
+    "feature_list": [
+      "rsi",
+      "macd",
+      "atr",
+      "bollinger_width",
+      "volume_ratio",
+      "price_change",
+      "candle_body",
+      "momentum"
+    ]
   },
+
   "rl": {
     "algorithm": "ppo",
     "train_interval": "1d",
-    "max_steps": 20000
+    "max_steps": 20000,
+    "learning_rate": 0.0003,
+    "discount_factor": 0.99,
+    "reward_structure": {
+      "profit_reward": 1.0,
+      "drawdown_penalty": -0.5,
+      "trade_frequency_penalty": -0.05
+    },
+    "model_save_path": "models/rl_agent.zip"
   },
+
+  "execution": {
+    "order_retry_attempts": 3,
+    "refresh_rate_ms": 500,
+    "max_open_trades": 5,
+    "close_all_on_shutdown": true,
+    "enable_trailing_stop": true,
+    "trailing_stop_distance": 0.0015,
+    "trade_cooldown_sec": 30
+  },
+
   "logging": {
     "trade_log": "logs/trades.csv",
     "ml_log": "logs/ml_trading_log.csv",
-    "session_log": "logs/session.log"
+    "session_log": "logs/session.log",
+    "optimizer_log": "logs/optimizer_results.json",
+    "log_level": "INFO"
+  },
+
+  "notifications": {
+    "email_alerts": false,
+    "telegram_alerts": false,
+    "webhook_url": ""
   }
 }

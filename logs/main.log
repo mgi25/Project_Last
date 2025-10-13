@@ -1,0 +1,40 @@
+2025-10-13 12:53:04,383 [INFO] Starting bot in collect mode
+2025-10-13 12:53:04,565 [ERROR] MT5 initialization failed: (-2, 'Invalid "login" argument')
+2025-10-13 12:53:04,565 [ERROR] Error during collect: Failed to initialize MetaTrader5
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 127, in main
+    raise RuntimeError("Failed to initialize MetaTrader5")
+RuntimeError: Failed to initialize MetaTrader5
+2025-10-13 12:53:04,570 [INFO] MT5 connection closed
+2025-10-13 12:53:24,299 [INFO] Starting bot in collect mode
+2025-10-13 12:53:24,390 [ERROR] MT5 initialization failed: (-2, 'Invalid "login" argument')
+2025-10-13 12:53:24,390 [ERROR] Error during collect: Failed to initialize MetaTrader5
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 127, in main
+    raise RuntimeError("Failed to initialize MetaTrader5")
+RuntimeError: Failed to initialize MetaTrader5
+2025-10-13 12:53:24,395 [INFO] MT5 connection closed
+2025-10-13 13:46:48,489 [INFO] Starting bot in collect mode
+2025-10-13 13:46:48,689 [ERROR] MT5 initialization failed: (-2, 'Invalid "login" argument')
+2025-10-13 13:46:48,690 [ERROR] Error during collect: Failed to initialize MetaTrader5
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 127, in main
+    raise RuntimeError("Failed to initialize MetaTrader5")
+RuntimeError: Failed to initialize MetaTrader5
+2025-10-13 13:46:48,693 [INFO] MT5 connection closed
+2025-10-13 13:48:29,894 [INFO] Starting bot in collect mode
+2025-10-13 13:48:29,990 [ERROR] MT5 initialization failed: (-2, 'Invalid "login" argument')
+2025-10-13 13:48:29,990 [ERROR] Error during collect: Failed to initialize MetaTrader5
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 127, in main
+    raise RuntimeError("Failed to initialize MetaTrader5")
+RuntimeError: Failed to initialize MetaTrader5
+2025-10-13 13:48:29,993 [INFO] MT5 connection closed
+2025-10-13 14:18:39,329 [INFO] Starting bot in collect mode
+2025-10-13 14:18:39,539 [ERROR] MT5 initialization failed: (-2, 'Invalid "login" argument')
+2025-10-13 14:18:39,539 [ERROR] Error during collect: Failed to initialize MetaTrader5
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 127, in main
+    raise RuntimeError("Failed to initialize MetaTrader5")
+RuntimeError: Failed to initialize MetaTrader5
+2025-10-13 14:18:39,543 [INFO] MT5 connection closed
