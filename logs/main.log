@@ -38,3 +38,47 @@ Traceback (most recent call last):
     raise RuntimeError("Failed to initialize MetaTrader5")
 RuntimeError: Failed to initialize MetaTrader5
 2025-10-13 14:18:39,543 [INFO] MT5 connection closed
+2025-10-13 14:22:49,342 [INFO] Starting bot in collect mode
+2025-10-13 14:22:49,527 [INFO] Connected to MT5 account 274509355 on Exness-MT5Trial6
+2025-10-13 14:22:50,524 [INFO] Starting data collection for 4 symbols
+2025-10-13 14:22:50,524 [INFO] Collecting data for EURUSD
+2025-10-13 14:22:50,525 [ERROR] Failed to select symbol EURUSD: (-1, 'Terminal: Call failed')
+2025-10-13 14:22:50,525 [INFO] Collecting data for GBPUSD
+2025-10-13 14:22:50,526 [ERROR] Failed to select symbol GBPUSD: (-1, 'Terminal: Call failed')
+2025-10-13 14:22:50,526 [INFO] Collecting data for USDJPY
+2025-10-13 14:22:50,526 [ERROR] Failed to select symbol USDJPY: (-1, 'Terminal: Call failed')
+2025-10-13 14:22:50,526 [INFO] Collecting data for XAUUSD
+2025-10-13 14:22:50,526 [ERROR] Failed to select symbol XAUUSD: (-1, 'Terminal: Call failed')
+2025-10-13 14:22:50,526 [INFO] Data collection complete
+2025-10-13 14:22:50,527 [INFO] Completed collect mode successfully
+2025-10-13 14:22:50,527 [INFO] MT5 connection closed
+2025-10-13 14:23:25,506 [INFO] Starting bot in collect mode
+2025-10-13 14:23:25,611 [INFO] Connected to MT5 account 274509355 on Exness-MT5Trial6
+2025-10-13 14:23:26,018 [INFO] Starting data collection for 4 symbols
+2025-10-13 14:23:26,018 [INFO] Collecting data for EURUSDm
+2025-10-13 14:23:26,447 [INFO] Saved 29146 rows for EURUSDm to data\eurusdm_m1.csv
+2025-10-13 14:23:26,448 [INFO] Collecting data for GBPUSDm
+2025-10-13 14:23:26,756 [INFO] Saved 29139 rows for GBPUSDm to data\gbpusdm_m1.csv
+2025-10-13 14:23:26,758 [INFO] Collecting data for USDJPYm
+2025-10-13 14:23:27,126 [INFO] Saved 29144 rows for USDJPYm to data\usdjpym_m1.csv
+2025-10-13 14:23:27,127 [INFO] Collecting data for XAUUSDm
+2025-10-13 14:23:27,259 [INFO] Saved 27827 rows for XAUUSDm to data\xauusdm_m1.csv
+2025-10-13 14:23:27,260 [INFO] Data collection complete
+2025-10-13 14:23:27,260 [INFO] Completed collect mode successfully
+2025-10-13 14:23:27,260 [INFO] MT5 connection closed
+2025-10-13 18:36:48,115 [INFO] Starting bot in train mode
+2025-10-13 18:36:56,658 [ERROR] Error during train: MLConfig.__init__() got an unexpected keyword argument 'train_test_split'
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 154, in main
+    from bot_core.ml_model import MLModel  # type: ignore[attr-defined]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: cannot import name 'MLModel' from 'bot_core.ml_model' (C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py). Did you mean: 'ml_model'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 160, in main
+    trainer = MLPredictor(MLConfig(**ml_cfg))
+                          ~~~~~~~~^^^^^^^^^^
+TypeError: MLConfig.__init__() got an unexpected keyword argument 'train_test_split'
+2025-10-13 18:36:56,668 [INFO] MT5 connection closed
