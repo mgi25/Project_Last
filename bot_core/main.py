@@ -150,25 +150,10 @@ def main() -> None:
             collector.run()
 
         elif args.mode == "train":
-            try:
-                from bot_core.ml_model import MLModel  # type: ignore[attr-defined]
-            except ImportError:
-                from bot_core.ml_model import MLConfig, MLPredictor
-                import pandas as pd
+            from bot_core.ml_model import MLTrainer
 
-                ml_cfg = config.get("ml", {})
-                trainer = MLPredictor(MLConfig(**ml_cfg))
-                data_path = Path(config.get("training_data", _default_data_path(config)))
-                if not data_path.exists():
-                    raise FileNotFoundError(
-                        f"Training data not found at {data_path}. Run in collect mode first."
-                    )
-                dataset = pd.read_csv(data_path)
-                metrics = trainer.train(dataset)
-                logging.info("Training complete: %s", metrics)
-            else:
-                trainer = MLModel(config)
-                trainer.train()
+            trainer = MLTrainer(config)
+            trainer.train_all()
 
         elif args.mode == "tune":
             try:
