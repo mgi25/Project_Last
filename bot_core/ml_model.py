@@ -23,6 +23,11 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 from xgboost import XGBClassifier
 
+try:  # pragma: no cover - optional for older versions
+    from xgboost import callback as xgb_callback
+except ImportError:  # pragma: no cover - compatibility shim
+    xgb_callback = None  # type: ignore[assignment]
+
 LOGGER = logging.getLogger(__name__)
 
 
@@ -218,6 +223,7 @@ class MLTrainer:
         self.train_ratio = ml_cfg.get("train_ratio", 0.8)
         self.optuna_trials = int(ml_cfg.get("optuna_trials", 20))
         self.lookback_default = int(ml_cfg.get("lookback", 50))
+        self.max_sequence_memory_mb = float(ml_cfg.get("max_sequence_memory_mb", 512))
         data_dir = self.config.get("data", {}).get("save_path", "data")
 
         ensure_directory("logs")
@@ -233,7 +239,7 @@ class MLTrainer:
         self.scaler: StandardScaler | None = None
 
     def _prepare_datasets(self, lookback: int) -> DatasetBundle:
-        features = self.dataset[self.feature_columns].values
+        features = self.dataset[self.feature_columns].to_numpy()
         targets = self.dataset["target"].to_numpy()
         future_returns = self.dataset["future_return"].to_numpy()
 
@@ -241,24 +247,60 @@ class MLTrainer:
         if effective_n <= 0:
             raise ValueError("Lookback larger than dataset length")
 
+        feature_dim = features.shape[1]
+        if self.max_sequence_memory_mb > 0:
+            bytes_per_sequence = lookback * feature_dim * np.dtype(np.float32).itemsize
+            if bytes_per_sequence <= 0:
+                raise ValueError("Invalid sequence configuration leading to zero-sized windows")
+            max_sequences = int((self.max_sequence_memory_mb * 1024 * 1024) // bytes_per_sequence)
+            if max_sequences <= 0:
+                raise MemoryError(
+                    "Configured max_sequence_memory_mb too small to allocate any sequence"
+                )
+            if effective_n > max_sequences:
+                start_idx = len(targets) - (max_sequences + lookback)
+                start_idx = max(start_idx, 0)
+                if start_idx > 0:
+                    rows_kept = max_sequences + lookback
+                    LOGGER.warning(
+                        (
+                            "Reducing dataset to last %d rows (~%d sequences) to respect "
+                            "memory limit of %.1f MB (requested lookback=%d)"
+                        ),
+                        rows_kept,
+                        max_sequences,
+                        self.max_sequence_memory_mb,
+                        lookback,
+                    )
+                    features = features[start_idx:]
+                    targets = targets[start_idx:]
+                    future_returns = future_returns[start_idx:]
+                    effective_n = len(targets) - lookback
+                    if effective_n <= 0:
+                        raise ValueError(
+                            "Memory-constrained dataset reduction removed all effective samples"
+                        )
+
         split_idx = max(int(effective_n * self.train_ratio), 1)
         scaler = StandardScaler()
         scaler.fit(features[lookback : lookback + split_idx])
-        features_scaled = scaler.transform(features)
+        features_scaled = scaler.transform(features).astype(np.float32)
 
-        sequences = []
-        for idx in range(lookback, len(features_scaled)):
-            sequences.append(features_scaled[idx - lookback : idx])
-        sequences = np.asarray(sequences, dtype=np.float32)
+        n_sequences = len(features_scaled) - lookback
+        sequences = np.empty(
+            (n_sequences, lookback, features_scaled.shape[1]), dtype=np.float32
+        )
+        for idx in range(n_sequences):
+            sequences[idx] = features_scaled[idx : idx + lookback]
 
         X_tab = features_scaled[lookback:]
         y = targets[lookback:]
         returns = future_returns[lookback:]
 
-        X_train_tab = X_tab[:split_idx]
-        X_test_tab = X_tab[split_idx:]
-        X_train_seq = sequences[:split_idx]
-        X_test_seq = sequences[split_idx:]
+        X_train_tab = np.ascontiguousarray(X_tab[:split_idx])
+        X_test_tab = np.ascontiguousarray(X_tab[split_idx:])
+        X_train_seq = np.ascontiguousarray(sequences[:split_idx])
+        X_test_seq = np.ascontiguousarray(sequences[split_idx:])
         y_train = y[:split_idx]
         y_test = y[split_idx:]
         returns_train = returns[:split_idx]
@@ -318,13 +360,34 @@ class MLTrainer:
             scale_pos_weight=float(params.get("scale_pos_weight", 1.0)),
             reg_lambda=float(params.get("reg_lambda", 1.0)),
         )
-        clf.fit(
-            bundle.X_train_tab,
-            bundle.y_train,
-            eval_set=[(bundle.X_test_tab, bundle.y_test)],
-            verbose=False,
-            early_stopping_rounds=25,
-        )
+        fit_kwargs = {
+            "eval_set": [(bundle.X_test_tab, bundle.y_test)],
+            "verbose": False,
+        }
+        try:
+            clf.fit(
+                bundle.X_train_tab,
+                bundle.y_train,
+                early_stopping_rounds=25,
+                **fit_kwargs,
+            )
+        except TypeError as exc:
+            if "early_stopping_rounds" not in str(exc):
+                raise
+            if xgb_callback is None:
+                raise
+            LOGGER.info(
+                "Falling back to callback-based early stopping for XGBoost: %s", exc
+            )
+            callbacks = [
+                xgb_callback.EarlyStopping(rounds=25, save_best=True, maximize=False)
+            ]
+            clf.fit(
+                bundle.X_train_tab,
+                bundle.y_train,
+                callbacks=callbacks,
+                **fit_kwargs,
+            )
         return clf
 
     def _train_lstm(
@@ -383,7 +446,15 @@ class MLTrainer:
 
         def objective(trial: optuna.Trial) -> float:
             lookback = trial.suggest_int("lookback", 40, 70)
-            bundle = self._prepare_datasets(lookback)
+            try:
+                bundle = self._prepare_datasets(lookback)
+            except MemoryError as exc:
+                LOGGER.warning(
+                    "Trial failed due to memory constraints at lookback=%d: %s",
+                    lookback,
+                    exc,
+                )
+                raise optuna.exceptions.TrialPruned() from exc
 
             pos = max(bundle.y_train.sum(), 1)
             neg = max(len(bundle.y_train) - bundle.y_train.sum(), 1)
@@ -454,7 +525,12 @@ class MLTrainer:
         assert self.best_params is not None
 
         lookback = int(self.best_params.get("lookback", self.lookback_default))
-        bundle = self._prepare_datasets(lookback)
+        try:
+            bundle = self._prepare_datasets(lookback)
+        except MemoryError as exc:
+            raise RuntimeError(
+                f"Unable to prepare datasets for lookback={lookback} due to memory constraints"
+            ) from exc
         xgb_params = dict(self.best_params["xgb"])
         pos = max(bundle.y_train.sum(), 1)
         neg = max(len(bundle.y_train) - bundle.y_train.sum(), 1)
