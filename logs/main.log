@@ -106,3 +106,516 @@ Traceback (most recent call last):
     engine = ExecutionEngine(config)
 TypeError: ExecutionEngine.__init__() missing 1 required positional argument: 'account'
 2025-10-13 18:45:51,927 [INFO] MT5 connection closed
+2025-10-13 19:31:49,827 [INFO] Starting bot in train mode
+2025-10-13 19:32:11,613 [INFO] Model random_forest metrics | acc=0.514 prec=0.474 rec=0.361 f1=0.410 pf=1.04 win=0.48
+2025-10-13 19:32:15,796 [INFO] Training complete: {'accuracy': 0.5137315482320631, 'precision': 0.4735322425409047, 'recall': 0.36136614028644876, 'f1': 0.4099146011247657, 'profit_factor': 1.0433298781492755, 'win_rate': 0.47974596635770683, 'avg_confidence': 0.11381865061136845, 'model_type': 'random_forest'}
+2025-10-13 19:32:15,797 [INFO] Completed train mode successfully
+2025-10-13 19:32:15,803 [INFO] MT5 connection closed
+2025-10-13 19:32:35,836 [INFO] Starting bot in tune mode
+2025-10-13 19:32:36,302 [INFO] Running legacy tuning pipeline
+2025-10-13 19:32:36,305 [INFO] Newton optimization result: x=[1. 1.] score=-0.0000
+2025-10-13 19:32:36,332 [INFO] Bayesian tuning result: params={'threshold': 0.916003289018564} score=-0.0840
+2025-10-13 19:32:36,333 [INFO] Completed tune mode successfully
+2025-10-13 19:32:36,337 [INFO] MT5 connection closed
+2025-10-13 19:32:40,573 [INFO] Starting bot in backtest mode
+2025-10-13 19:32:41,136 [INFO] Running basic backtest
+2025-10-13 19:33:04,339 [INFO] Backtest complete | return=-0.0174 sharpe=-0.1094 win_rate=0.49
+2025-10-13 19:33:04,339 [INFO] Completed backtest mode successfully
+2025-10-13 19:33:04,339 [INFO] MT5 connection closed
+2025-10-13 19:33:15,462 [INFO] Starting bot in train mode
+2025-10-13 19:33:18,505 [INFO] MT5 connection closed
+2025-10-13 19:33:22,146 [INFO] Starting bot in live mode
+2025-10-13 19:33:22,261 [INFO] Connected to MT5 account 274509355 on Exness-MT5Trial6
+2025-10-13 19:33:25,072 [ERROR] Error during live: RiskConfig.__init__() got an unexpected keyword argument 'equity_stop_trigger'
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 269, in main
+    engine = ExecutionEngine(config, execution_config, account_cfg, demo=args.demo)
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\execution.py", line 95, in __init__
+    self.risk_manager = RiskManager(RiskConfig(**raw_config.get("risk", {})))
+                                    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: RiskConfig.__init__() got an unexpected keyword argument 'equity_stop_trigger'
+2025-10-13 19:33:25,073 [INFO] MT5 connection closed
+2025-10-13 19:39:49,104 [INFO] Starting bot in live mode
+2025-10-13 19:39:49,318 [INFO] Connected to MT5 account 274509355 on Exness-MT5Trial6
+2025-10-13 19:39:56,151 [INFO] Loaded ML model from models\model.pkl
+2025-10-13 19:39:56,153 [INFO] Starting execution engine | mode=live demo=False symbols=EURUSDm,GBPUSDm,USDJPYm,XAUUSDm
+2025-10-13 19:39:56,154 [INFO] Connected to MetaTrader5 server Exness-MT5Trial6
+2025-10-13 19:39:56,155 [INFO] Risk manager session reset | equity=10000.00
+2025-10-13 21:11:33,571 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:33,580 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:33,580 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:33,580 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:34,081 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:34,081 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:34,082 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:34,082 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:34,582 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:34,584 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:34,586 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:34,586 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:35,087 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:35,088 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:35,088 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:35,088 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:35,589 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:35,589 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:35,589 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:35,590 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:36,090 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:36,091 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:36,091 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:36,091 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:36,592 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:36,592 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:36,592 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:36,593 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:37,093 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:37,094 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:37,094 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:37,094 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:37,594 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:37,595 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:37,595 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:37,595 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:38,096 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:38,096 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:38,097 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:38,097 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:38,597 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:38,598 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:38,598 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:38,598 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:39,098 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:39,099 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:39,099 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:39,100 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:39,603 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:39,608 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:39,608 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:39,608 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:40,109 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:40,109 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:40,109 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:40,110 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:40,610 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:40,611 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:40,611 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:40,611 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:41,112 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:41,112 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:41,112 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:41,112 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:41,614 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:41,615 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:41,615 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:41,615 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:42,116 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:42,116 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:42,116 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:42,116 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:42,617 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:42,617 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:42,618 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:42,618 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:43,118 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:43,119 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:43,119 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:43,119 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:43,620 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:43,620 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:43,620 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:43,620 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:44,121 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:44,121 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:44,122 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:44,122 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:44,623 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:44,623 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:44,623 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:44,623 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:45,124 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:45,125 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:45,125 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:45,125 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:45,627 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:45,627 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:45,627 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:45,627 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:46,128 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:46,129 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:46,129 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:46,129 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:46,630 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:46,630 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:46,630 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:46,630 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:47,131 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:47,132 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:47,132 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:47,132 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:47,633 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:47,634 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:47,634 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:47,634 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:48,135 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:48,135 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:48,136 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:48,136 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:48,636 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:48,636 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:48,637 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:48,637 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:49,137 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:49,137 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:49,137 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:49,137 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:49,638 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:49,638 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:49,639 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:49,639 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:50,140 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:50,140 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:50,141 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:50,141 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:50,643 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:50,643 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:50,644 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:50,644 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:51,145 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:51,145 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:51,145 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:51,146 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:51,646 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:51,647 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:51,647 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:51,648 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:52,148 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:52,149 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:52,149 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:52,149 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:52,650 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:52,651 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:52,651 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:52,651 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:53,153 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:53,153 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:53,153 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:53,153 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:53,654 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:53,655 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:53,655 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:53,655 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:54,155 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:54,156 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:54,156 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:54,156 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:54,657 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:54,657 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:54,657 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:54,658 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:55,158 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:55,159 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:55,159 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:55,159 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:55,659 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:55,660 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:55,660 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:55,660 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:56,161 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:56,162 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:56,162 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:56,162 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:56,663 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:56,663 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:56,663 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:56,663 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:57,164 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:57,164 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:57,165 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:57,165 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:57,665 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:57,666 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:57,666 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:57,666 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:58,166 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:58,167 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:58,167 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:58,167 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:58,668 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:58,668 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:58,668 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:58,669 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:59,169 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:59,170 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:59,170 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:59,170 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:59,670 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:59,671 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:11:59,671 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:11:59,671 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:00,172 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:00,172 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:00,172 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:00,172 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:00,673 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:00,674 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:00,674 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:00,674 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:01,175 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:01,175 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:01,175 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:01,175 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:01,676 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:01,677 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:01,677 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:01,678 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:02,180 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:02,180 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:02,181 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:02,181 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:02,681 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:02,682 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:02,682 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:02,682 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:03,183 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:03,183 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:03,183 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:03,183 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:03,685 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:03,685 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:03,685 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:03,685 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:04,186 [ERROR] Failed to fetch history for EURUSDm: Failed to download rates for EURUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:04,186 [ERROR] Failed to fetch history for GBPUSDm: Failed to download rates for GBPUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:04,187 [ERROR] Failed to fetch history for USDJPYm: Failed to download rates for USDJPYm: (-10001, 'IPC send failed')
+2025-10-13 21:12:04,204 [ERROR] Failed to fetch history for XAUUSDm: Failed to download rates for XAUUSDm: (-10001, 'IPC send failed')
+2025-10-13 21:12:04,421 [INFO] Shutdown signal received. Stopping trading loop...
+2025-10-13 21:12:04,707 [INFO] Execution engine shutdown complete.
+2025-10-13 21:12:04,711 [INFO] Completed live mode successfully
+2025-10-13 21:12:04,712 [INFO] MT5 connection closed
+2025-10-15 10:14:47,720 [INFO] Starting bot in train mode
+2025-10-15 10:15:29,633 [INFO] Model random_forest metrics | acc=0.514 prec=0.474 rec=0.361 f1=0.410 pf=1.04 win=0.48
+2025-10-15 10:15:34,149 [INFO] Training complete: {'accuracy': 0.5137315482320631, 'precision': 0.4735322425409047, 'recall': 0.36136614028644876, 'f1': 0.4099146011247657, 'profit_factor': 1.0433298781492755, 'win_rate': 0.47974596635770683, 'avg_confidence': 0.11381865061136845, 'model_type': 'random_forest'}
+2025-10-15 10:15:34,149 [INFO] Completed train mode successfully
+2025-10-15 10:15:34,158 [INFO] MT5 connection closed
+2025-10-15 10:53:24,245 [INFO] Starting bot in train mode
+2025-10-15 10:53:36,224 [INFO] Starting Optuna optimization with 20 trials
+2025-10-15 10:53:36,713 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:53:37,105 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:53:37,979 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:53:39,460 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:53:40,405 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:53:41,481 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:53:43,006 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:53:53,220 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:54:00,559 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 10:54:07,456 [ERROR] Error during train: Unable to allocate 769. MiB for an array with shape (114808, 65, 27) and data type float32
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 156, in main
+    trainer.train_all()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py", line 453, in train_all
+    self.optimize()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py", line 427, in optimize
+    self.study.optimize(objective, n_trials=self.optuna_trials, show_progress_bar=False)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\study.py", line 490, in optimize
+    _optimize(
+    ~~~~~~~~~^
+        study=self,
+        ^^^^^^^^^^^
+    ...<7 lines>...
+        show_progress_bar=show_progress_bar,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\_optimize.py", line 63, in _optimize
+    _optimize_sequential(
+    ~~~~~~~~~~~~~~~~~~~~^
+        study,
+        ^^^^^^
+    ...<8 lines>...
+        progress_bar=progress_bar,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\_optimize.py", line 160, in _optimize_sequential
+    frozen_trial_id = _run_trial(study, func, catch)
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\_optimize.py", line 258, in _run_trial
+    raise func_err
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\_optimize.py", line 201, in _run_trial
+    value_or_values = func(trial)
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py", line 386, in objective
+    bundle = self._prepare_datasets(lookback)
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py", line 252, in _prepare_datasets
+    sequences = np.asarray(sequences, dtype=np.float32)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 769. MiB for an array with shape (114808, 65, 27) and data type float32
+2025-10-15 10:54:08,365 [INFO] MT5 connection closed
+2025-10-15 11:31:04,371 [INFO] Starting bot in train mode
+2025-10-15 11:31:13,868 [INFO] Starting Optuna optimization with 20 trials
+2025-10-15 11:31:13,885 [WARNING] Reducing dataset to last 78968 rows (~78905 sequences) to respect memory limit of 512.0 MB (requested lookback=63)
+2025-10-15 11:31:14,153 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:14,154 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:14,161 [WARNING] Reducing dataset to last 95648 rows (~95596 sequences) to respect memory limit of 512.0 MB (requested lookback=52)
+2025-10-15 11:31:14,430 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:14,430 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:14,437 [WARNING] Reducing dataset to last 82910 rows (~82850 sequences) to respect memory limit of 512.0 MB (requested lookback=60)
+2025-10-15 11:31:14,959 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:14,959 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:14,969 [WARNING] Reducing dataset to last 71084 rows (~71014 sequences) to respect memory limit of 512.0 MB (requested lookback=70)
+2025-10-15 11:31:15,783 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:15,784 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:15,801 [WARNING] Reducing dataset to last 88824 rows (~88768 sequences) to respect memory limit of 512.0 MB (requested lookback=56)
+2025-10-15 11:31:16,822 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:16,823 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:16,868 [WARNING] Reducing dataset to last 81553 rows (~81492 sequences) to respect memory limit of 512.0 MB (requested lookback=61)
+2025-10-15 11:31:17,659 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:17,660 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:17,733 [WARNING] Reducing dataset to last 87267 rows (~87210 sequences) to respect memory limit of 512.0 MB (requested lookback=57)
+2025-10-15 11:31:18,465 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:18,466 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:18,480 [WARNING] Reducing dataset to last 80239 rows (~80177 sequences) to respect memory limit of 512.0 MB (requested lookback=62)
+2025-10-15 11:31:19,579 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:19,580 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:19,618 [WARNING] Reducing dataset to last 74261 rows (~74194 sequences) to respect memory limit of 512.0 MB (requested lookback=67)
+2025-10-15 11:31:22,219 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:22,227 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:30,551 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:30,568 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:30,790 [WARNING] Reducing dataset to last 105813 rows (~105766 sequences) to respect memory limit of 512.0 MB (requested lookback=47)
+2025-10-15 11:31:36,263 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:36,268 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:36,331 [WARNING] Reducing dataset to last 99470 rows (~99420 sequences) to respect memory limit of 512.0 MB (requested lookback=50)
+2025-10-15 11:31:36,687 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:36,687 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:36,699 [WARNING] Reducing dataset to last 97522 rows (~97471 sequences) to respect memory limit of 512.0 MB (requested lookback=51)
+2025-10-15 11:31:36,974 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:36,974 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:36,987 [WARNING] Reducing dataset to last 76542 rows (~76477 sequences) to respect memory limit of 512.0 MB (requested lookback=65)
+2025-10-15 11:31:37,268 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:37,268 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:37,279 [WARNING] Reducing dataset to last 95648 rows (~95596 sequences) to respect memory limit of 512.0 MB (requested lookback=52)
+2025-10-15 11:31:37,588 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:37,588 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:37,600 [WARNING] Reducing dataset to last 110512 rows (~110467 sequences) to respect memory limit of 512.0 MB (requested lookback=45)
+2025-10-15 11:31:38,076 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:38,077 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:38,092 [WARNING] Reducing dataset to last 90437 rows (~90382 sequences) to respect memory limit of 512.0 MB (requested lookback=55)
+2025-10-15 11:31:39,273 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:39,276 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:39,323 [WARNING] Reducing dataset to last 76542 rows (~76477 sequences) to respect memory limit of 512.0 MB (requested lookback=65)
+2025-10-15 11:31:45,810 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:46,031 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:46,462 [WARNING] Reducing dataset to last 84313 rows (~84254 sequences) to respect memory limit of 512.0 MB (requested lookback=59)
+2025-10-15 11:31:46,736 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:31:46,736 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:31:46,750 [WARNING] Reducing dataset to last 92110 rows (~92056 sequences) to respect memory limit of 512.0 MB (requested lookback=54)
+2025-10-15 11:32:02,716 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:32:04,552 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:32:07,389 [ERROR] Error during train: No trials are completed yet.
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 156, in main
+    trainer.train_all()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py", line 524, in train_all
+    self.optimize()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py", line 500, in optimize
+    "lookback": self.study.best_params["lookback"],
+                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\study.py", line 120, in best_params
+    return self.best_trial.params
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\study.py", line 156, in best_trial
+    return self._get_best_trial(deepcopy=True)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\study.py", line 308, in _get_best_trial
+    best_trial = self._storage.get_best_trial(self._study_id)
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\storages\_in_memory.py", line 252, in get_best_trial
+    raise ValueError("No trials are completed yet.")
+ValueError: No trials are completed yet.
+2025-10-15 11:32:29,388 [INFO] MT5 connection closed
+2025-10-15 11:34:45,628 [INFO] Starting bot in train mode
+2025-10-15 11:34:53,428 [INFO] Starting Optuna optimization with 20 trials
+2025-10-15 11:34:53,452 [WARNING] Reducing dataset to last 110512 rows (~110467 sequences) to respect memory limit of 512.0 MB (requested lookback=45)
+2025-10-15 11:34:53,778 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:34:53,779 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:34:53,788 [WARNING] Reducing dataset to last 73171 rows (~73103 sequences) to respect memory limit of 512.0 MB (requested lookback=68)
+2025-10-15 11:34:54,118 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:34:54,118 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:34:54,127 [WARNING] Reducing dataset to last 82910 rows (~82850 sequences) to respect memory limit of 512.0 MB (requested lookback=60)
+2025-10-15 11:34:54,915 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:34:54,916 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:34:54,928 [WARNING] Reducing dataset to last 101498 rows (~101449 sequences) to respect memory limit of 512.0 MB (requested lookback=49)
+2025-10-15 11:34:55,740 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:34:55,740 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:34:55,753 [WARNING] Reducing dataset to last 95648 rows (~95596 sequences) to respect memory limit of 512.0 MB (requested lookback=52)
+2025-10-15 11:34:56,496 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:34:56,496 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:34:56,513 [WARNING] Reducing dataset to last 92110 rows (~92056 sequences) to respect memory limit of 512.0 MB (requested lookback=54)
+2025-10-15 11:34:57,374 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:34:57,374 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:34:57,389 [WARNING] Reducing dataset to last 99470 rows (~99420 sequences) to respect memory limit of 512.0 MB (requested lookback=50)
+2025-10-15 11:34:58,673 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:34:58,676 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:34:58,746 [WARNING] Reducing dataset to last 113021 rows (~112977 sequences) to respect memory limit of 512.0 MB (requested lookback=44)
+2025-10-15 11:34:59,195 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:34:59,196 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:34:59,238 [WARNING] Reducing dataset to last 78968 rows (~78905 sequences) to respect memory limit of 512.0 MB (requested lookback=63)
+2025-10-15 11:35:00,329 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:00,330 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:00,354 [WARNING] Reducing dataset to last 85765 rows (~85707 sequences) to respect memory limit of 512.0 MB (requested lookback=58)
+2025-10-15 11:35:01,347 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:01,348 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:42,976 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:42,993 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:43,097 [WARNING] Reducing dataset to last 71084 rows (~71014 sequences) to respect memory limit of 512.0 MB (requested lookback=70)
+2025-10-15 11:35:43,511 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:43,511 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:43,531 [WARNING] Reducing dataset to last 71084 rows (~71014 sequences) to respect memory limit of 512.0 MB (requested lookback=70)
+2025-10-15 11:35:43,857 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:43,857 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:43,868 [WARNING] Reducing dataset to last 76542 rows (~76477 sequences) to respect memory limit of 512.0 MB (requested lookback=65)
+2025-10-15 11:35:44,217 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:44,218 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:44,242 [WARNING] Reducing dataset to last 110512 rows (~110467 sequences) to respect memory limit of 512.0 MB (requested lookback=45)
+2025-10-15 11:35:44,785 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:44,791 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:44,883 [WARNING] Reducing dataset to last 87267 rows (~87210 sequences) to respect memory limit of 512.0 MB (requested lookback=57)
+2025-10-15 11:35:45,417 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:45,417 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:45,536 [WARNING] Reducing dataset to last 76542 rows (~76477 sequences) to respect memory limit of 512.0 MB (requested lookback=65)
+2025-10-15 11:35:48,590 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:48,652 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:49,424 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:49,425 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:49,613 [WARNING] Reducing dataset to last 105813 rows (~105766 sequences) to respect memory limit of 512.0 MB (requested lookback=47)
+2025-10-15 11:35:51,422 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:51,429 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:52,092 [WARNING] Reducing dataset to last 81553 rows (~81492 sequences) to respect memory limit of 512.0 MB (requested lookback=61)
+2025-10-15 11:35:58,430 [INFO] Falling back to callback-based early stopping for XGBoost: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2025-10-15 11:35:58,548 [WARNING] Trial failed due to error: XGBClassifier.fit() got an unexpected keyword argument 'callbacks'
+2025-10-15 11:35:59,254 [ERROR] Error during train: No trials are completed yet.
+Traceback (most recent call last):
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\main.py", line 156, in main
+    trainer.train_all()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py", line 524, in train_all
+    self.optimize()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\mgial\OneDrive\Documents\Project_Last\bot_core\ml_model.py", line 500, in optimize
+    "lookback": self.study.best_params["lookback"],
+                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\study.py", line 120, in best_params
+    return self.best_trial.params
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\study.py", line 156, in best_trial
+    return self._get_best_trial(deepcopy=True)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\study\study.py", line 308, in _get_best_trial
+    best_trial = self._storage.get_best_trial(self._study_id)
+  File "C:\Users\mgial\AppData\Local\Programs\Python\Python313\Lib\site-packages\optuna\storages\_in_memory.py", line 252, in get_best_trial
+    raise ValueError("No trials are completed yet.")
+ValueError: No trials are completed yet.
+2025-10-15 11:36:05,926 [INFO] MT5 connection closed
